@@ -23,6 +23,7 @@ void Game::update(Time deltaTime)
 {
 	player.update(deltaTime);
 	enemy.update(deltaTime);
+	player.collision(enemy);
 }
 
 void Game::draw()

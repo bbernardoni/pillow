@@ -40,3 +40,7 @@ void Enemy::update(Time deltaTime){
 void Enemy::draw(RenderTarget& rt){
 	body.draw(rt);
 }
+
+void Enemy::takeDamage(int source){
+
+}

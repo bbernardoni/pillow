@@ -56,3 +56,7 @@ void Player::draw(RenderTarget& rt){
 	if (!sword.paused())
 		sword.draw(rt);
 }
+
+void Player::takeDamage(int source){
+
+}

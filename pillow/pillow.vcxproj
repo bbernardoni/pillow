@@ -77,20 +77,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
-    <ClCompile Include="animator.cpp" />
     <ClCompile Include="animObject.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
-    <ClInclude Include="animator.h" />
     <ClInclude Include="animObject.h" />
     <ClInclude Include="app.h" />
-    <ClInclude Include="collision.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
