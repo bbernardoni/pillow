@@ -79,6 +79,7 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animObject.cpp" />
     <ClCompile Include="app.cpp" />
+    <ClCompile Include="boundingBox.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="animObject.h" />
     <ClInclude Include="app.h" />
+    <ClInclude Include="boundingBox.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />

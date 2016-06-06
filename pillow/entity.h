@@ -1,8 +1,11 @@
 #ifndef ENTITY_H_
 #define ENTITY_H_
 
+#include "animObject.h"
+#include <vector>
 #include <SFML/Graphics.hpp>
 using namespace sf;
+using std::vector;
 
 class Entity
 {
@@ -19,6 +22,7 @@ public:
 	
 protected:
 	Dir dir;
+	vector<AnimObject*> parts;
 
 };
 

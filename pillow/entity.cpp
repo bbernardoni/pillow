@@ -28,10 +28,26 @@ Entity::Dir Entity::getDir(Vector2f vel) {
 }
 
 void Entity::collision(Entity& enemy){
-	if (true){
-		enemy.takeDamage(0);
+	for (AnimObject* attackObject : parts){
+		if (attackObject->getDamaging()){
+			for (AnimObject* defendObject : enemy.parts){
+				if (defendObject->getDamagable()){
+					if (attackObject->collides(*defendObject)){
+						enemy.takeDamage(0);
+					}
+				}
+			}
+		}
 	}
-	if (true){
-		takeDamage(1);
+	for (AnimObject* attackObject : enemy.parts){
+		if (attackObject->getDamaging()){
+			for (AnimObject* defendObject : parts){
+				if (defendObject->getDamagable()){
+					if (attackObject->collides(*defendObject)){
+						takeDamage(1);
+					}
+				}
+			}
+		}
 	}
 }

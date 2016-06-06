@@ -6,11 +6,12 @@ AnimObject::AnimObject(Sprite sp, Animation* anim, bool looped) :
 {
 	speed = 1.0f;
 	isPaused = true;
+	damaging = false;
+	damagable = false;
 }
 
-
-void AnimObject::setSprite(Sprite sp){
-	sprite = sp;
+void AnimObject::addBoundingBox(FloatRect boundingRect){
+	boxes.push_back(BoundingBox(boundingRect, &sprite));
 }
 
 void AnimObject::setAnimation(Animation* anim){
@@ -34,26 +35,10 @@ void AnimObject::draw(RenderTarget& rt){
 	rt.draw(sprite);
 }
 
-void AnimObject::setLooped(bool looped){
-	isLooped = looped;
-}
-
-void AnimObject::setSpeed(float animSpeed){
-	speed = animSpeed;
-}
-
 void AnimObject::restart(){
 	isPaused = false;
 	if (animation)
 		animation->reset();
-}
-
-void AnimObject::play(){
-	isPaused = false;
-}
-
-void AnimObject::pause(){
-	isPaused = true;
 }
 
 void AnimObject::stop(){
@@ -62,6 +47,12 @@ void AnimObject::stop(){
 		animation->reset();
 }
 
-bool AnimObject::paused(){
-	return isPaused;
+bool AnimObject::collides(AnimObject& other){
+	for (BoundingBox thisBox : boxes){
+		for (BoundingBox otherBox : other.boxes){
+			if (thisBox.collides(otherBox))
+				return true;
+		}
+	}
+	return false;
 }
