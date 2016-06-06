@@ -2,20 +2,19 @@
 
 Player::Player() :
 	playerSpeed(200),
-	body(Texture(),IntRect(0, 0, 50, 100)),
-	sword(Texture(), IntRect(0, 0, 100, 10)),
+	body(Sprite(Texture(), IntRect(0, 0, 50, 100))),
 	swingRight(seconds(0.2f)),
-	animator(&swingRight)
+	sword(Sprite(Texture(), IntRect(0, 0, 100, 10)), &swingRight)
 {
-	body.setColor(Color::Red);
-	body.setOrigin(25, 50);
-
-	sword.setColor(Color::Blue);
-	sword.setOrigin(-50, 5);
-	sword.rotate(45);
+	body.sprite.setColor(Color::Red);
+	body.sprite.setOrigin(25, 50);
 
 	swingRight.addFrame(AnimFrame(Vector2f(), -90));
-	swingRight.addFrame(AnimFrame(Vector2f(),  90));
+	swingRight.addFrame(AnimFrame(Vector2f(), 90));
+
+	sword.sprite.setColor(Color::Blue);
+	sword.sprite.setOrigin(-50, 5);
+	sword.sprite.rotate(45);
 }
 
 void Player::init(){
@@ -40,20 +39,20 @@ void Player::update(Time deltaTime){
 	vel *= dt;
 
 	if (Keyboard::isKeyPressed(Keyboard::J)){
-		animator.play();
+		sword.play();
 	}
 
 	Dir newDir = getDir(vel);
 	if (newDir != NoDir)
 		dir = newDir;
 
-	body.move(vel);
-	sword.move(vel);
-	animator.update(sword, deltaTime);
+	body.sprite.move(vel);
+	sword.sprite.move(vel);
+	sword.update(deltaTime);
 }
 
 void Player::draw(RenderTarget& rt){
-	rt.draw(body);
-	if (!animator.paused())
-		rt.draw(sword);
+	body.draw(rt);
+	if (!sword.paused())
+		sword.draw(rt);
 }

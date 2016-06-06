@@ -1,7 +1,8 @@
 #include "game.h"
 
 Game::Game(RenderWindow& rw):
-	window(rw)
+	window(rw),
+	enemy(Vector2f(1000, 450))
 {
 
 }
@@ -9,6 +10,7 @@ Game::Game(RenderWindow& rw):
 void Game::init()
 {
 	player.init();
+	enemy.init();
 }
 
 void Game::processEvent(Event event)
@@ -20,9 +22,11 @@ void Game::processEvent(Event event)
 void Game::update(Time deltaTime)
 {
 	player.update(deltaTime);
+	enemy.update(deltaTime);
 }
 
 void Game::draw()
 {
-	player.draw(window);
+	player.draw(window);                                                             
+	enemy.draw(window);
 }

@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include "player.h"
+#include "enemy.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -16,8 +17,9 @@ public:
     void draw();
 
 private:
-    RenderWindow& window;
+	RenderWindow& window;
 	Player player;
+	Enemy enemy;
 
 };
 
