@@ -11,6 +11,7 @@ void Game::init()
 {
 	player.init();
 	enemy.init();
+	sword.init();
 }
 
 void Game::processEvent(Event event)
@@ -23,11 +24,14 @@ void Game::update(Time deltaTime)
 {
 	player.update(deltaTime);
 	enemy.update(deltaTime);
+	sword.update(deltaTime);
 	player.collision(enemy);
+	sword.collision(enemy);
 }
 
 void Game::draw()
 {
 	player.draw(window);                                                             
-	enemy.draw(window);
+	enemy.draw(window);                                                            
+	sword.draw(window);
 }

@@ -1,22 +1,22 @@
-#ifndef ENEMY_H_
-#define ENEMY_H_
+#ifndef SWORD_H_
+#define SWORD_H_
 
 #include "entity.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-class Enemy: public Entity
+class Sword: public Entity
 {
 public:
-	Enemy(Vector2f pos);
+    Sword();
 
     void init();
 	void update(Time deltaTime);
     void draw(RenderTarget& rt);
 
-	void takeDamage(int source);
+	void takeDamage(int source){}
 private:
-	const float playerSpeed;
+	Animation swingRight;
 
 };
 

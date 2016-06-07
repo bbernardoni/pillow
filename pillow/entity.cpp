@@ -1,5 +1,25 @@
 #include "entity.h"
 
+Entity::Entity(const Texture& texture, Animation* anim) :
+	sprite(texture), anim(&sprite, anim)
+{
+	visible = true;
+	damaging = false;
+	damagable = false;
+}
+
+Entity::Entity(const Texture& texture, const IntRect& rectangle, Animation* anim) :
+	sprite(texture, rectangle), anim(&sprite, anim)
+{
+	visible = true;
+	damaging = false;
+	damagable = false;
+}
+
+void Entity::addBoundingBox(FloatRect boundingRect){
+	boxes.push_back(BoundingBox(boundingRect, &sprite));
+}
+
 Entity::Dir Entity::getDir(Vector2f vel) {
 	if (vel.y > 0){
 		if (vel.x > 0)
@@ -27,27 +47,23 @@ Entity::Dir Entity::getDir(Vector2f vel) {
 	}
 }
 
-void Entity::collision(Entity& enemy){
-	for (AnimObject* attackObject : parts){
-		if (attackObject->getDamaging()){
-			for (AnimObject* defendObject : enemy.parts){
-				if (defendObject->getDamagable()){
-					if (attackObject->collides(*defendObject)){
-						enemy.takeDamage(0);
-					}
-				}
+void Entity::collision(Entity& other){
+	if(!visible || !other.visible)
+		return;
+	bool collides = false;
+	for(size_t i=0; i < boxes.size(); i++){
+		for(size_t j=0; j < other.boxes.size(); j++){
+			if (boxes[i].collides(other.boxes[j])){
+				collides = true;
+				goto testCollisionDone;
 			}
 		}
 	}
-	for (AnimObject* attackObject : enemy.parts){
-		if (attackObject->getDamaging()){
-			for (AnimObject* defendObject : parts){
-				if (defendObject->getDamagable()){
-					if (attackObject->collides(*defendObject)){
-						takeDamage(1);
-					}
-				}
-			}
-		}
+testCollisionDone:
+	if (collides){
+		if (damaging && other.damagable)
+			other.takeDamage(0);
+		if (damagable && other.damaging)
+			takeDamage(0);
 	}
 }

@@ -33,13 +33,16 @@
     <ClCompile Include="enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="animObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="boundingBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +65,13 @@
     <ClInclude Include="enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="animObject.h">
+    <ClInclude Include="boundingBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="boundingBox.h">
+    <ClInclude Include="sword.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

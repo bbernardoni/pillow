@@ -3,6 +3,7 @@
 
 #include "player.h"
 #include "enemy.h"
+#include "sword.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -20,6 +21,7 @@ private:
 	RenderWindow& window;
 	Player player;
 	Enemy enemy;
+	Sword sword;
 
 };
 

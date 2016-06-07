@@ -77,7 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
-    <ClCompile Include="animObject.cpp" />
+    <ClCompile Include="animator.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="boundingBox.cpp" />
     <ClCompile Include="enemy.cpp" />
@@ -85,16 +85,18 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="sword.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
-    <ClInclude Include="animObject.h" />
+    <ClInclude Include="animator.h" />
     <ClInclude Include="app.h" />
     <ClInclude Include="boundingBox.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="sword.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

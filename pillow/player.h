@@ -2,8 +2,6 @@
 #define PLAYER_H_
 
 #include "entity.h"
-#include "animation.h"
-#include "animObject.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -19,12 +17,6 @@ public:
 	void takeDamage(int source);
 private:
 	const float playerSpeed;
-
-	AnimObject body;
-
-	Animation swingRight;
-	AnimObject sword;
-
 };
 
 #endif

@@ -2,15 +2,14 @@
 
 Enemy::Enemy(Vector2f pos) :
 	playerSpeed(200),
-	body(Sprite(Texture(),IntRect(0, 0, 50, 100)))
+	Entity(Texture(),IntRect(0, 0, 50, 100))
 {
-	body.sprite.setColor(Color::Green);
-	body.sprite.setOrigin(25, 50);
-	body.sprite.setPosition(pos);
-	body.setDamaging(true);
-	body.setDamagable(true);
-	body.addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
-	parts.push_back(&body);
+	sprite.setColor(Color::Green);
+	sprite.setOrigin(25, 50);
+	sprite.setPosition(pos);
+	damaging = true;
+	damagable = true;
+	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
 
 void Enemy::init(){
@@ -38,15 +37,15 @@ void Enemy::update(Time deltaTime){
 	if (newDir != NoDir)
 		dir = newDir;
 
-	body.sprite.move(vel);
+	sprite.move(vel);
 }
 
 void Enemy::draw(RenderTarget& rt){
-	body.draw(rt);
+	rt.draw(sprite);
 }
 
 void Enemy::takeDamage(int source){
-	Color c = body.sprite.getColor();
+	Color c = sprite.getColor();
 	c.b = (c.b + 10) % 255;
-	body.sprite.setColor(c);
+	sprite.setColor(c);
 }
