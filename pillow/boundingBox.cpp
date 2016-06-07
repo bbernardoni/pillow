@@ -34,7 +34,7 @@ bool BoundingBox::collides(BoundingBox& other) {
     other.updatePoints();
 
     Vector2f axes[4] = {
-        Vector2f(points[1].x-points[0].x, points[1].y-points[0].y),
+		Vector2f(points[1].x-points[0].x, points[1].y-points[0].y),
         Vector2f(points[1].x-points[2].x, points[1].y-points[2].y),
         Vector2f(other.points[0].x-other.points[3].x, other.points[0].y-other.points[3].y),
         Vector2f(other.points[0].x-other.points[1].x, other.points[0].y-other.points[1].y)
