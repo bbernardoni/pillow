@@ -4,6 +4,7 @@ Enemy::Enemy(Vector2f pos) :
 	playerSpeed(200),
 	Entity(Texture(),IntRect(0, 0, 50, 100))
 {
+	id = enemy;
 	sprite.setColor(Color::Green);
 	sprite.setOrigin(25, 50);
 	sprite.setPosition(pos);
@@ -40,12 +41,12 @@ void Enemy::update(Time deltaTime){
 	sprite.move(vel);
 }
 
-void Enemy::draw(RenderTarget& rt){
-	rt.draw(sprite);
-}
-
-void Enemy::takeDamage(int source){
-	Color c = sprite.getColor();
-	c.b = (c.b + 10) % 255;
-	sprite.setColor(c);
+void Enemy::takeDamage(EntityID source){
+	switch(source){
+	case sword:
+		Color c = sprite.getColor();
+		c.b = (c.b + 10) % 255;
+		sprite.setColor(c);
+		break;
+	}
 }

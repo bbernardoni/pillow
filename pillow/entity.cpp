@@ -16,6 +16,11 @@ Entity::Entity(const Texture& texture, const IntRect& rectangle, Animation* anim
 	damagable = false;
 }
 
+void Entity::draw(RenderTarget& rt){
+	if (visible)
+		rt.draw(sprite);
+}
+
 void Entity::addBoundingBox(FloatRect boundingRect){
 	boxes.push_back(BoundingBox(boundingRect, &sprite));
 }
@@ -62,8 +67,8 @@ void Entity::collision(Entity& other){
 testCollisionDone:
 	if (collides){
 		if (damaging && other.damagable)
-			other.takeDamage(0);
+			other.takeDamage(id);
 		if (damagable && other.damaging)
-			takeDamage(0);
+			takeDamage(other.id);
 	}
 }

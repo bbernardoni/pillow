@@ -12,9 +12,10 @@ public:
 
     void init();
 	void update(Time deltaTime);
-    void draw(RenderTarget& rt);
 
-	void takeDamage(int source){}
+	void takeDamage(EntityID source){}
+	void move(Vector2f vel);
+
 private:
 	Animation swingRight;
 

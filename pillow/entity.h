@@ -16,14 +16,15 @@ public:
 
 	virtual void init(){}
 	virtual void update(Time deltaTime) = 0;
-	virtual void draw(RenderTarget& rt) = 0;
+	void draw(RenderTarget& rt);
 
 	void addBoundingBox(FloatRect boundingRect);
 
 	enum Dir { Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight, NoDir };
 	static Dir getDir(Vector2f vel);
-
-	virtual void takeDamage(int source) = 0; // source should be a enum eventually
+	
+	enum EntityID { sword, player, enemy };
+	virtual void takeDamage(EntityID source) = 0; // source should be a enum eventually
 	void collision(Entity& other);
 	
 protected:
@@ -33,6 +34,7 @@ protected:
 	Sprite sprite;
 	Animator anim;
 
+	EntityID id;
 	vector<BoundingBox> boxes;
 	bool damaging;
 	bool damagable;

@@ -4,6 +4,7 @@ Player::Player() :
 	playerSpeed(200),
 	Entity(Texture(), IntRect(0, 0, 50, 100))
 {
+	id = player;
 	sprite.setColor(Color::Red);
 	sprite.setOrigin(25, 50);
 	damagable = true;
@@ -36,14 +37,16 @@ void Player::update(Time deltaTime){
 		dir = newDir;
 
 	sprite.move(vel);
+	if(weapon)
+		weapon->move(vel);
 }
 
-void Player::draw(RenderTarget& rt){
-	rt.draw(sprite);
-}
-
-void Player::takeDamage(int source){
-	Color c = sprite.getColor();
-	c.b = (c.b + 10) % 255;
-	sprite.setColor(c);
+void Player::takeDamage(EntityID source){
+	switch(source){
+	case enemy:
+		Color c = sprite.getColor();
+		c.b = (c.b + 10) % 255;
+		sprite.setColor(c);
+		break;
+	}
 }

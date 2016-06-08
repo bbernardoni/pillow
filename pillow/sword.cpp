@@ -7,6 +7,7 @@ Sword::Sword() :
 	swingRight.addFrame(AnimFrame(Vector2f(), -90));
 	swingRight.addFrame(AnimFrame(Vector2f(), 90));
 
+	id = sword;
 	sprite.setColor(Color::Blue);
 	sprite.setOrigin(-50, 5);
 	sprite.rotate(45);
@@ -20,36 +21,20 @@ void Sword::init(){
 
 void Sword::update(Time deltaTime){
 	float dt = deltaTime.asSeconds();
-	Vector2f vel;
-	if (Keyboard::isKeyPressed(Keyboard::W)){
-		vel.y -= 200;
-	}
-	if(Keyboard::isKeyPressed(Keyboard::A)){
-		vel.x -= 200;
-	}
-	if (Keyboard::isKeyPressed(Keyboard::S)){
-		vel.y += 200;
-	}
-	if(Keyboard::isKeyPressed(Keyboard::D)){
-		vel.x += 200;
-	}
-	vel *= dt;
-
+	
 	if (Keyboard::isKeyPressed(Keyboard::J)){
 		anim.play();
 	}
 
-	Dir newDir = getDir(vel);
-	if (newDir != NoDir)
-		dir = newDir;
-
-	sprite.move(vel);
 	anim.update(deltaTime);
 
     visible = !anim.paused();
 }
 
-void Sword::draw(RenderTarget& rt){
-	if (visible)
-		rt.draw(sprite);
+void Sword::move(Vector2f vel){
+	Dir newDir = getDir(vel);
+	if (newDir != NoDir)
+		dir = newDir;
+
+	sprite.move(vel);
 }

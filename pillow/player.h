@@ -2,6 +2,7 @@
 #define PLAYER_H_
 
 #include "entity.h"
+#include "sword.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
@@ -12,11 +13,12 @@ public:
 
     void init();
 	void update(Time deltaTime);
-    void draw(RenderTarget& rt);
 
-	void takeDamage(int source);
+	void takeDamage(EntityID source);
+	void setWeapon(Sword* wp){ weapon = wp; }
 private:
 	const float playerSpeed;
+	Sword* weapon;
 };
 
 #endif

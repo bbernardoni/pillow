@@ -4,13 +4,16 @@
 #include "player.h"
 #include "enemy.h"
 #include "sword.h"
+#include <vector>
 #include <SFML/Graphics.hpp>
 using namespace sf;
+using std::vector;
 
 class Game
 {
 public:
     Game(RenderWindow& rw);
+	~Game();
 
 	void init();
 	void processEvent(Event event);
@@ -20,8 +23,9 @@ public:
 private:
 	RenderWindow& window;
 	Player player;
-	Enemy enemy;
 	Sword sword;
+
+	vector<Entity*> enimies;
 
 };
 

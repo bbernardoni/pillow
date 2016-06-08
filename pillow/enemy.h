@@ -12,9 +12,8 @@ public:
 
     void init();
 	void update(Time deltaTime);
-    void draw(RenderTarget& rt);
 
-	void takeDamage(int source);
+	void takeDamage(EntityID source);
 private:
 	const float playerSpeed;
 
