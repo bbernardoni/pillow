@@ -37,8 +37,12 @@ void Player::update(Time deltaTime){
 		dir = newDir;
 
 	sprite.move(vel);
-	if(weapon)
+	if(weapon){
 		weapon->move(vel);
+		if (Keyboard::isKeyPressed(Keyboard::J)){
+			weapon->swing();
+		}
+	}
 }
 
 void Player::takeDamage(EntityID source){

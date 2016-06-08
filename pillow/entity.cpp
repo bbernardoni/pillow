@@ -52,6 +52,10 @@ Entity::Dir Entity::getDir(Vector2f vel) {
 	}
 }
 
+float Entity::getDirAngle(Dir dir){
+	return dir * 45.0f;
+}
+
 void Entity::collision(Entity& other){
 	if(!visible || !other.visible)
 		return;

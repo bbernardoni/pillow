@@ -20,21 +20,21 @@ void Sword::init(){
 }
 
 void Sword::update(Time deltaTime){
-	float dt = deltaTime.asSeconds();
-	
-	if (Keyboard::isKeyPressed(Keyboard::J)){
-		anim.play();
-	}
-
 	anim.update(deltaTime);
-
     visible = !anim.paused();
 }
 
 void Sword::move(Vector2f vel){
 	Dir newDir = getDir(vel);
-	if (newDir != NoDir)
+	if (newDir != NoDir && newDir != dir){
+		float dAngle = getDirAngle(newDir) - getDirAngle(dir);
+		sprite.rotate(dAngle);
 		dir = newDir;
+	}
 
 	sprite.move(vel);
+}
+
+void Sword::swing(){
+	anim.play();
 }

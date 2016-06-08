@@ -20,11 +20,12 @@ public:
 
 	void addBoundingBox(FloatRect boundingRect);
 
-	enum Dir { Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight, NoDir };
+	enum Dir { Right, UpRight, Up, UpLeft, Left, DownLeft, Down, DownRight, NoDir };
 	static Dir getDir(Vector2f vel);
+	static float getDirAngle(Dir dir);
 	
 	enum EntityID { sword, player, enemy };
-	virtual void takeDamage(EntityID source) = 0; // source should be a enum eventually
+	virtual void takeDamage(EntityID source) = 0;
 	void collision(Entity& other);
 	
 protected:

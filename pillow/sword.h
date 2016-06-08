@@ -15,6 +15,7 @@ public:
 
 	void takeDamage(EntityID source){}
 	void move(Vector2f vel);
+	void swing();
 
 private:
 	Animation swingRight;
