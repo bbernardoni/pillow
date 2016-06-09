@@ -7,6 +7,7 @@ Player::Player() :
 	id = player;
 	sprite.setColor(Color::Red);
 	sprite.setOrigin(25, 50);
+	sprite.setPosition(Vector2f(400,400));
 	damagable = true;
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
@@ -46,11 +47,15 @@ void Player::update(Time deltaTime){
 }
 
 void Player::takeDamage(EntityID source){
+	if(invTimer.getElapsedTime() < invTime)
+		return;
+	invTimer.restart();
 	switch(source){
 	case enemy:
 		Color c = sprite.getColor();
 		c.b = (c.b + 10) % 255;
 		sprite.setColor(c);
+		invTime = seconds(0.05f);
 		break;
 	}
 }

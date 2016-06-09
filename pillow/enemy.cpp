@@ -42,11 +42,15 @@ void Enemy::update(Time deltaTime){
 }
 
 void Enemy::takeDamage(EntityID source){
+	if(invTimer.getElapsedTime() < invTime)
+		return;
+	invTimer.restart();
 	switch(source){
 	case sword:
 		Color c = sprite.getColor();
-		c.b = (c.b + 10) % 255;
+		c.b = (c.b + 100) % 255;
 		sprite.setColor(c);
+		invTime = seconds(0.4f);
 		break;
 	}
 }

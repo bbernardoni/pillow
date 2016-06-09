@@ -39,7 +39,9 @@ protected:
 	vector<BoundingBox> boxes;
 	bool damaging;
 	bool damagable;
-
+	
+	Clock invTimer;
+	Time invTime;
 };
 
 #endif

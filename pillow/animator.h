@@ -14,6 +14,7 @@ public:
 	
 	void setSprite(Sprite* sp){ sprite = sp; }
 	void setAnimation(Animation* anim);
+	Animation* getAnimation() { return animation; }
 
 	void update(Time deltaTime);
 

@@ -32,6 +32,8 @@ public:
 	bool update(Sprite& sprite, Time deltaTime);
 	void reset();
 
+	Time getAnimLen(){ return animLen; }
+
 private:
 	vector<AnimFrame> frames;
 	unsigned int frame;
@@ -39,6 +41,7 @@ private:
 	Time frameLen;
 
 	Time getFrameLen(AnimFrame af);
+	Time animLen;
 };
 
 #endif

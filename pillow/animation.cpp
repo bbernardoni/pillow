@@ -38,6 +38,7 @@ Animation::Animation(Time frameLength):
 
 void Animation::addFrame(AnimFrame animFrame){
 	frames.push_back(animFrame);
+	animLen += getFrameLen(animFrame);
 }
 
 bool Animation::update(Sprite& sprite, Time deltaTime){

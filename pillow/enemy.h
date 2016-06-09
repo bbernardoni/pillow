@@ -16,7 +16,6 @@ public:
 	void takeDamage(EntityID source);
 private:
 	const float playerSpeed;
-
 };
 
 #endif

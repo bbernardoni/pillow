@@ -11,6 +11,7 @@ Sword::Sword() :
 	sprite.setColor(Color::Blue);
 	sprite.setOrigin(-50, 5);
 	sprite.rotate(45);
+	sprite.setPosition(Vector2f(400,400));
 	damaging = true;
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
@@ -26,7 +27,7 @@ void Sword::update(Time deltaTime){
 
 void Sword::move(Vector2f vel){
 	Dir newDir = getDir(vel);
-	if (newDir != NoDir && newDir != dir){
+	if (newDir != NoDir && newDir != dir && anim.paused()){
 		float dAngle = getDirAngle(newDir) - getDirAngle(dir);
 		sprite.rotate(dAngle);
 		dir = newDir;
