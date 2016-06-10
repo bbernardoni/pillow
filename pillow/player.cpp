@@ -1,14 +1,10 @@
 #include "player.h"
 
 Player::Player() :
-	playerSpeed(200),
-	Entity(Texture(), IntRect(0, 0, 50, 100))
+	Character(Texture(), IntRect(0, 0, 50, 100), NULL, Vector2f(400, 400))
 {
 	id = player;
 	sprite.setColor(Color::Red);
-	sprite.setOrigin(25, 50);
-	sprite.setPosition(Vector2f(400,400));
-	damagable = true;
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
 
@@ -20,16 +16,16 @@ void Player::update(Time deltaTime){
 	float dt = deltaTime.asSeconds();
 	Vector2f vel;
 	if(Keyboard::isKeyPressed(Keyboard::W)){
-		vel.y -= playerSpeed;
+		vel.y -= charaSpeed;
 	}
 	if(Keyboard::isKeyPressed(Keyboard::A)){
-		vel.x -= playerSpeed;
+		vel.x -= charaSpeed;
 	}
 	if(Keyboard::isKeyPressed(Keyboard::S)){
-		vel.y += playerSpeed;
+		vel.y += charaSpeed;
 	}
 	if(Keyboard::isKeyPressed(Keyboard::D)){
-		vel.x += playerSpeed;
+		vel.x += charaSpeed;
 	}
 	vel *= dt;
 

@@ -3,17 +3,21 @@
 Entity::Entity(const Texture& texture, Animation* anim) :
 	sprite(texture), anim(&sprite, anim)
 {
-	visible = true;
-	damaging = false;
-	damagable = false;
+	construct();
 }
 
 Entity::Entity(const Texture& texture, const IntRect& rectangle, Animation* anim) :
 	sprite(texture, rectangle), anim(&sprite, anim)
 {
+	construct();
+}
+
+void Entity::construct(){
 	visible = true;
 	damaging = false;
 	damagable = false;
+	IntRect size = sprite.getTextureRect();
+	sprite.setOrigin(size.width * 0.5f, size.height * 0.5f);
 }
 
 void Entity::draw(RenderTarget& rt){

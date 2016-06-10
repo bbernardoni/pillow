@@ -1,11 +1,11 @@
 #ifndef ENEMY_H_
 #define ENEMY_H_
 
-#include "entity.h"
+#include "character.h"
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-class Enemy: public Entity
+class Enemy: public Character
 {
 public:
 	Enemy(Vector2f pos);
@@ -14,8 +14,9 @@ public:
 	void update(Time deltaTime);
 
 	void takeDamage(EntityID source);
+
 private:
-	const float playerSpeed;
+
 };
 
 #endif

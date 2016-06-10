@@ -1,15 +1,11 @@
 #include "enemy.h"
 
 Enemy::Enemy(Vector2f pos) :
-	playerSpeed(200),
-	Entity(Texture(),IntRect(0, 0, 50, 100))
+	Character(Texture(), IntRect(0, 0, 50, 100), NULL, pos)
 {
 	id = enemy;
 	sprite.setColor(Color::Green);
-	sprite.setOrigin(25, 50);
-	sprite.setPosition(pos);
 	damaging = true;
-	damagable = true;
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
 
@@ -21,16 +17,16 @@ void Enemy::update(Time deltaTime){
 	float dt = deltaTime.asSeconds();
 	Vector2f vel;
 	if (Keyboard::isKeyPressed(Keyboard::Up)){
-		vel.y -= playerSpeed;
+		vel.y -= charaSpeed;
 	}
 	if(Keyboard::isKeyPressed(Keyboard::Left)){
-		vel.x -= playerSpeed;
+		vel.x -= charaSpeed;
 	}
 	if (Keyboard::isKeyPressed(Keyboard::Down)){
-		vel.y += playerSpeed;
+		vel.y += charaSpeed;
 	}
 	if(Keyboard::isKeyPressed(Keyboard::Right)){
-		vel.x += playerSpeed;
+		vel.x += charaSpeed;
 	}
 	vel *= dt;
 
