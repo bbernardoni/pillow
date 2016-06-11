@@ -10,7 +10,6 @@ class Enemy: public Character
 public:
 	Enemy(Vector2f pos);
 
-    void init();
 	void update(Time deltaTime);
 
 	void takeDamage(EntityID source);

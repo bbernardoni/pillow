@@ -17,11 +17,7 @@ Game::~Game(){
 
 void Game::init()
 {
-	player.init();
-	sword.init();
-	for(size_t i=0; i < enimies.size(); i++){
-		enimies[i]->init();
-	}
+	
 }
 
 void Game::processEvent(Event event)

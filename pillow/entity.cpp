@@ -13,11 +13,14 @@ Entity::Entity(const Texture& texture, const IntRect& rectangle, Animation* anim
 }
 
 void Entity::construct(){
+	dir = Right;
 	visible = true;
-	damaging = false;
-	damagable = false;
+
 	IntRect size = sprite.getTextureRect();
 	sprite.setOrigin(size.width * 0.5f, size.height * 0.5f);
+
+	damaging = false;
+	damagable = false;
 }
 
 void Entity::draw(RenderTarget& rt){
@@ -58,6 +61,12 @@ Entity::Dir Entity::getDir(Vector2f vel) {
 
 float Entity::getDirAngle(Dir dir){
 	return dir * 45.0f;
+}
+
+void Entity::setDirAngle(Vector2f vel){
+	Dir newDir = getDir(vel);
+	if (newDir != NoDir)
+		dir = newDir;
 }
 
 void Entity::collision(Entity& other){

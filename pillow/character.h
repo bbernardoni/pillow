@@ -14,6 +14,9 @@ public:
 	void takeDamage(EntityID source);
 
 protected:
+	Vector2f getWASDvel();
+	Vector2f getArrowsVel();
+
 	const float charaSpeed;
 
 	Clock invTimer;

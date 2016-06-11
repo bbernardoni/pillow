@@ -10,7 +10,6 @@ class Sword: public Entity
 public:
     Sword();
 
-    void init();
 	void update(Time deltaTime);
 
 	void takeDamage(EntityID source){}

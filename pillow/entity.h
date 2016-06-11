@@ -14,7 +14,6 @@ public:
 	Entity(const Texture& texture, Animation* anim = NULL);
 	Entity(const Texture& texture, const IntRect& rectangle, Animation* anim = NULL);
 
-	virtual void init(){}
 	virtual void update(Time deltaTime) = 0;
 	void draw(RenderTarget& rt);
 
@@ -23,6 +22,7 @@ public:
 	enum Dir { Right, UpRight, Up, UpLeft, Left, DownLeft, Down, DownRight, NoDir };
 	static Dir getDir(Vector2f vel);
 	static float getDirAngle(Dir dir);
+	void setDirAngle(Vector2f vel);
 	
 	enum EntityID { sword, player, enemy };
 	virtual void takeDamage(EntityID source) = 0;

@@ -9,31 +9,11 @@ Enemy::Enemy(Vector2f pos) :
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
 }
 
-void Enemy::init(){
-	dir = Right;
-}
-
 void Enemy::update(Time deltaTime){
 	float dt = deltaTime.asSeconds();
-	Vector2f vel;
-	if (Keyboard::isKeyPressed(Keyboard::Up)){
-		vel.y -= charaSpeed;
-	}
-	if(Keyboard::isKeyPressed(Keyboard::Left)){
-		vel.x -= charaSpeed;
-	}
-	if (Keyboard::isKeyPressed(Keyboard::Down)){
-		vel.y += charaSpeed;
-	}
-	if(Keyboard::isKeyPressed(Keyboard::Right)){
-		vel.x += charaSpeed;
-	}
-	vel *= dt;
+	Vector2f vel = getArrowsVel() * dt;
 
-	Dir newDir = getDir(vel);
-	if (newDir != NoDir)
-		dir = newDir;
-
+	setDirAngle(vel);
 	sprite.move(vel);
 }
 

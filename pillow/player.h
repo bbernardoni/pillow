@@ -11,7 +11,6 @@ class Player: public Character
 public:
     Player();
 
-    void init();
 	void update(Time deltaTime);
 
 	void takeDamage(EntityID source);

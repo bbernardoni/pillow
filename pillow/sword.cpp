@@ -9,15 +9,11 @@ Sword::Sword() :
 
 	id = sword;
 	sprite.setColor(Color::Blue);
-	sprite.setOrigin(-50, 5);
+	sprite.setOrigin(-30, 5);
 	sprite.rotate(45);
 	sprite.setPosition(Vector2f(400,400));
 	damaging = true;
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
-}
-
-void Sword::init(){
-	dir = Right;
 }
 
 void Sword::update(Time deltaTime){

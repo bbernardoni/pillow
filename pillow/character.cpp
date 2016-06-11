@@ -29,3 +29,41 @@ void Character::takeDamage(EntityID source){
 	//sprite.setColor(c);
 	//invTime = seconds(0.4f);
 }
+
+Vector2f Character::getWASDvel(){
+	Vector2f vel;
+
+	if (Keyboard::isKeyPressed(Keyboard::W)){
+		vel.y -= charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::A)){
+		vel.x -= charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::S)){
+		vel.y += charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::D)){
+		vel.x += charaSpeed;
+	}
+
+	return vel;
+}
+
+Vector2f Character::getArrowsVel(){
+	Vector2f vel;
+
+	if (Keyboard::isKeyPressed(Keyboard::Up)){
+		vel.y -= charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Left)){
+		vel.x -= charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Down)){
+		vel.y += charaSpeed;
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Right)){
+		vel.x += charaSpeed;
+	}
+
+	return vel;
+}
