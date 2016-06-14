@@ -25,7 +25,9 @@ private:
 	Player player;
 	Sword sword;
 
-	vector<Entity*> enimies;
+	vector<Character*> enimies;
+
+	void collision();
 
 };
 

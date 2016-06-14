@@ -12,7 +12,10 @@ public:
 
 	void update(Time deltaTime);
 
-	void takeDamage(EntityID source){}
+	void takeDamage(float damage, Time recovTime){}
+	float getDamage(EntityID source);
+	Time getInvTime(EntityID source);
+
 	void move(Vector2f vel);
 	void swing();
 

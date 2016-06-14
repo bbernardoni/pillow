@@ -14,6 +14,9 @@ public:
 	void update(Time deltaTime);
 
 	void takeDamage(EntityID source);
+	float getDamage(EntityID source){ return 0.0f; }
+	Time getInvTime(EntityID source){ return Time::Zero; }
+
 	void setWeapon(Sword* wp){ weapon = wp; }
 
 private:

@@ -84,8 +84,8 @@ void Entity::collision(Entity& other){
 testCollisionDone:
 	if (collides){
 		if (damaging && other.damagable)
-			other.takeDamage(id);
+			other.takeDamage(getDamage(other.id), getInvTime(other.id));
 		if (damagable && other.damaging)
-			takeDamage(other.id);
+			takeDamage(other.getDamage(id), other.getInvTime(id));
 	}
 }

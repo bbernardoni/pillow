@@ -33,9 +33,20 @@ void Game::update(Time deltaTime)
 	for(size_t i=0; i < enimies.size(); i++){
 		enimies[i]->update(deltaTime);
 	}
-	for(size_t i=0; i < enimies.size(); i++){
+	collision();
+}
+
+void Game::collision()
+{
+	for(size_t i = 0; i < enimies.size(); i++){
 		enimies[i]->collision(player);
 		enimies[i]->collision(sword);
+	}
+	for(size_t i = 0; i < enimies.size(); i++){
+		if(enimies[i]->isDead()){
+			delete enimies[i];
+			enimies.erase(enimies.begin() + i);
+		}
 	}
 }
 

@@ -4,8 +4,8 @@ Player::Player() :
 	Character(Texture(), IntRect(0, 0, 50, 100), NULL, Vector2f(400, 400))
 {
 	id = player;
-	sprite.setColor(Color::Red);
 	addBoundingBox(FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
+	hp = 100.0f;
 }
 
 void Player::update(Time deltaTime){
@@ -14,25 +14,16 @@ void Player::update(Time deltaTime){
 
 	setDirAngle(vel);
 	sprite.move(vel);
+
+	Uint8 color = (Uint8) (hp / 100.0f * 255.0f);
+	color = ((color % 256) + 256) % 256;
+	sprite.setColor(Color(color, 0, 0));
+
 	if(weapon){
 		weapon->move(vel);
 
 		if (Keyboard::isKeyPressed(Keyboard::J)){
 			weapon->swing();
 		}
-	}
-}
-
-void Player::takeDamage(EntityID source){
-	if(invTimer.getElapsedTime() < invTime)
-		return;
-	invTimer.restart();
-	switch(source){
-	case enemy:
-		Color c = sprite.getColor();
-		c.b = (c.b + 10) % 255;
-		sprite.setColor(c);
-		invTime = seconds(0.05f);
-		break;
 	}
 }

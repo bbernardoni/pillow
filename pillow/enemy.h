@@ -11,8 +11,9 @@ public:
 	Enemy(Vector2f pos);
 
 	void update(Time deltaTime);
-
-	void takeDamage(EntityID source);
+	
+	float getDamage(EntityID source);
+	Time getInvTime(EntityID source);
 
 private:
 

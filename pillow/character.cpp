@@ -19,15 +19,16 @@ void Character::construct(Vector2f pos){
 	damagable = true;
 }
 
-void Character::takeDamage(EntityID source){
+void Character::takeDamage(float damage, Time recovTime){
 	if (invTimer.getElapsedTime() < invTime)
 		return;
 	invTimer.restart();
+	invTime = recovTime;
+	hp -= damage;
+}
 
-	//Color c = sprite.getColor();
-	//c.b = (c.b + 100) % 255;
-	//sprite.setColor(c);
-	//invTime = seconds(0.4f);
+bool Character::isDead(){
+	return (hp <= 0.0f);
 }
 
 Vector2f Character::getWASDvel(){

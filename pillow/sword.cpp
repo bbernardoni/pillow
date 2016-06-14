@@ -21,6 +21,14 @@ void Sword::update(Time deltaTime){
     visible = !anim.paused();
 }
 
+float Sword::getDamage(EntityID source){
+	return 30;
+}
+
+Time Sword::getInvTime(EntityID source){
+	return seconds(0.4f);
+}
+
 void Sword::move(Vector2f vel){
 	Dir newDir = getDir(vel);
 	if (newDir != NoDir && newDir != dir && anim.paused()){

@@ -11,7 +11,9 @@ public:
 	Character(const Texture& texture, Animation* anim = NULL, Vector2f pos = Vector2f(0.0f, 0.0f), float speed = 200);
 	Character(const Texture& texture, const IntRect& rectangle, Animation* anim = NULL, Vector2f pos = Vector2f(0.0f, 0.0f), float speed = 200);
 
-	void takeDamage(EntityID source);
+	void takeDamage(float damage, Time recovTime);
+
+	bool isDead();
 
 protected:
 	Vector2f getWASDvel();
@@ -19,6 +21,7 @@ protected:
 
 	const float charaSpeed;
 
+	float hp;
 	Clock invTimer;
 	Time invTime;
 

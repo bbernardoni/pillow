@@ -25,7 +25,9 @@ public:
 	void setDirAngle(Vector2f vel);
 	
 	enum EntityID { sword, player, enemy };
-	virtual void takeDamage(EntityID source) = 0;
+	virtual void takeDamage(float damage, Time recovTime) = 0;
+	virtual float getDamage(EntityID source) = 0;
+	virtual Time getInvTime(EntityID source) = 0;
 	void collision(Entity& other);
 	
 protected:
